@@ -24,9 +24,10 @@ Subnet: **192.168.56.0/24**
 
 Each machine's IP configuration was verified to confirm that all systems were assigned addresses within the same subnet.
 
-## Windows 10 IP Configuration
+### Windows 10 IP Configuration
 
-![Windows IP](Screenshots/01_Windows_10_IP.png)
+Screenshot:
+[View Screenshot](Screenshots/01_Windows_10_IP.png)
 
 Command used:
 
@@ -36,9 +37,10 @@ ipconfig
 
 ---
 
-## Kali Linux IP Configuration
+### Kali Linux IP Configuration
 
-![Kali IP](Screenshots/02_Kali_Linux_IP.png)
+Screenshot:
+[View Screenshot](Screenshots/02_Kali_Linux_IP.png)
 
 Command used:
 
@@ -48,9 +50,10 @@ ip a
 
 ---
 
-## Metasploitable IP Configuration
+### Metasploitable IP Configuration
 
-![Metasploitable IP](Screenshots/03_Metasploitable_IP.png)
+Screenshot:
+[View Screenshot](Screenshots/03_Metasploitable_IP.png)
 
 Command used:
 
@@ -66,11 +69,10 @@ After confirming IP addresses, ICMP connectivity tests were performed between ma
 
 ---
 
-## Windows → Kali
+### Windows → Kali
 
-Windows successfully pinged Kali Linux.
-
-![Windows Ping](Screenshots/04_Windows_10_Ping.png)
+Screenshot:
+[View Screenshot](Screenshots/04_Windows_10_Ping.png)
 
 Command used:
 
@@ -80,11 +82,10 @@ ping 192.168.56.101
 
 ---
 
-## Kali → Windows
+### Kali → Windows
 
-Kali Linux successfully pinged the Windows system.
-
-![Kali Ping](Screenshots/05_Kali_Ping.png)
+Screenshot:
+[View Screenshot](Screenshots/05_Kali_Ping.png)
 
 Command used:
 
@@ -94,11 +95,10 @@ ping 192.168.56.105
 
 ---
 
-## Metasploitable → Kali
+### Metasploitable → Kali
 
-Metasploitable was able to communicate with Kali Linux via ICMP.
-
-![Metasploitable Ping](Screenshots/06_Metasploitable_Ping.png)
+Screenshot:
+[View Screenshot](Screenshots/06_Metasploitable_Ping.png)
 
 Command used:
 
@@ -121,7 +121,7 @@ ping
 
 # Findings
 
-All systems received valid IP addresses within the **192.168.56.0/24** network.
+All systems received valid IP addresses within the **192.168.56.0/24 network**.
 
 ICMP connectivity testing confirmed that the systems were able to communicate successfully within the isolated VirtualBox host-only network.
 
@@ -131,13 +131,18 @@ The lab environment is now ready for further security testing, enumeration, and 
 
 # Skills Demonstrated
 
-• Virtual machine network configuration
+• Virtual machine networking
 • Host-only networking in VirtualBox
 • IP address verification
 • Network troubleshooting
 • Connectivity validation using ICMP
 
 ---
+
+# Conclusion
+
+The virtual lab network was successfully configured and validated. All machines are able to communicate across the host-only network, establishing a stable environment for future cybersecurity exercises.
+
 
 # Conclusion
 

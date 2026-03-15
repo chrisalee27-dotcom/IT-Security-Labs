@@ -28,7 +28,7 @@ nmap -p 445 192.168.56.0/24
 ```
 
 Screenshot:
-[Screenshot](Screenshots/01_SMB_Port_Scan.png)
+[Screenshot](Screenshots/01_SMB_Port_Scan.png.png)
 
 ### Observation
 

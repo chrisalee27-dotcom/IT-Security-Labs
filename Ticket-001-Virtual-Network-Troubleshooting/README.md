@@ -144,7 +144,3 @@ The lab environment is now ready for further security testing, enumeration, and 
 The virtual lab network was successfully configured and validated. All machines are able to communicate across the host-only network, establishing a stable environment for future cybersecurity exercises.
 
 
-# Conclusion
-
-The virtual lab network was successfully configured and validated. All machines are able to communicate across the host-only network, establishing a stable environment for future cybersecurity exercises including
-

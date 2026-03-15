@@ -32,13 +32,13 @@ Screenshot:
 
 Observation:
 
-The scan indicated that the ports were **filtered**, meaning that a firewall or filtering device was blocking the scan results.
+The scan indicated that the ports were **filtered**, meaning a firewall or filtering device was preventing Nmap from determining the port state.
 
 ---
 
 # Step 2 — Disable Windows Firewall for Testing
 
-To determine if the firewall was responsible for blocking the ports, the Windows Defender Firewall was temporarily disabled.
+To determine whether the host firewall was responsible for filtering the scan results, the Windows Defender Firewall was temporarily disabled.
 
 Command used:
 
@@ -51,13 +51,13 @@ Screenshot:
 
 Observation:
 
-The firewall was successfully disabled, allowing the network scan to be repeated without filtering.
+The firewall was successfully disabled, allowing the port scan to be repeated without host-based filtering.
 
 ---
 
 # Step 3 — Verify Port Availability
 
-The port scan was performed again after disabling the firewall.
+After disabling the firewall, the port scan was performed again to verify whether the services were accessible.
 
 Command used:
 
@@ -70,7 +70,7 @@ Screenshot:
 
 Observation:
 
-The scan now showed the ports as **open**, confirming that the firewall was responsible for filtering the scan results.
+The ports were now reported as **open**, confirming that the Windows firewall had previously been filtering the scan results.
 
 ---
 
@@ -86,26 +86,28 @@ netsh
 
 # Findings
 
-The investigation determined that the Windows Defender Firewall was filtering inbound scan attempts.
+The investigation determined that the Windows Defender Firewall was responsible for filtering inbound port scan attempts.
 
 Key observations:
 
-• Ports initially appeared filtered
-• Disabling the firewall exposed the open services
-• The host firewall was responsible for the filtered scan results
+• Initial Nmap scan showed ports as **filtered**
+• Disabling the firewall allowed the scan to identify services
+• Ports **135, 139, and 445** were confirmed open on the Windows host
+
+These ports are commonly associated with **Windows RPC and SMB services**.
 
 ---
 
 # Skills Demonstrated
 
-• Network scanning with Nmap
-• Firewall troubleshooting
+• Network scanning using Nmap
 • Identifying filtered vs open ports
-• Host-based security analysis
+• Firewall troubleshooting
+• Host security configuration analysis
 
 ---
 
 # Conclusion
 
-The investigation confirmed that the Windows Defender Firewall was preventing Nmap from identifying open services on the host. After disabling the firewall, the scan revealed that the ports were open and accessible within the lab network.
+The investigation confirmed that the Windows Defender Firewall was preventing the initial Nmap scan from identifying open services. After disabling the firewall, the scan revealed that several Windows service ports were accessible within the lab network.
 

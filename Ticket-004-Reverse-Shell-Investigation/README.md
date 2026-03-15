@@ -2,16 +2,16 @@
 
 ## Objective
 
-Establish and verify a remote shell connection between Kali Linux and a Windows system within the virtual lab environment.
+Establish and verify a reverse shell connection between Kali Linux and a Windows workstation within the virtual lab environment.
 
 ---
 
 # Lab Environment
 
-| Machine    | Role                    | IP Address     |
-| ---------- | ----------------------- | -------------- |
-| Kali Linux | Security Testing System | 192.168.56.101 |
-| Windows 10 | Target Workstation      | 192.168.56.105 |
+| Machine    | Role               | IP Address     |
+| ---------- | ------------------ | -------------- |
+| Kali Linux | Attacker System    | 192.168.56.101 |
+| Windows 10 | Target Workstation | 192.168.56.105 |
 
 Network: **192.168.56.0/24**
 
@@ -19,7 +19,7 @@ Network: **192.168.56.0/24**
 
 # Step 1 — Initial Connection Attempt
 
-An attempt was made to connect from Kali Linux to the Windows system using Netcat.
+An initial connection attempt was made from Kali Linux to the Windows system using Netcat.
 
 Command used:
 
@@ -28,22 +28,22 @@ nc 192.168.56.105 4444
 ```
 
 Screenshot:
-[View Screenshot](Screenshots/15_Kali_Connection_Refused.png)
+[View Screenshot](Screenshots/15_Kali_Connection Refused.png)
 
 Observation:
 
-The connection attempt failed with a **connection refused** message, indicating that no service was listening on the target port.
+The connection attempt failed with a **connection refused** message, indicating that no process was listening on port **4444**.
 
 ---
 
 # Step 2 — Configure Listener on Windows
 
-A listener was configured on the Windows system to accept incoming connections.
+A listener was configured on the Windows system using PowerShell.
 
 Command used:
 
 ```
-powershell -c "Start-Process nc -ArgumentList '-lvnp 4444'"
+nc -lvnp 4444
 ```
 
 Screenshot:
@@ -51,13 +51,13 @@ Screenshot:
 
 Observation:
 
-The listener began waiting for inbound connections on port **4444**.
+The system began listening for incoming connections on port **4444**.
 
 ---
 
 # Step 3 — Establish Connection from Kali
 
-Kali Linux initiated a connection to the Windows listener.
+After configuring the listener, Kali Linux attempted the connection again.
 
 Command used:
 
@@ -70,13 +70,13 @@ Screenshot:
 
 Observation:
 
-The connection was successfully established between the attacker system and the target workstation.
+The connection was successfully established between the attacker system and the Windows workstation.
 
 ---
 
 # Step 4 — Verify Active Connection
 
-The connection was verified on the Windows system using the netstat command.
+The active connection was verified on the Windows system using netstat.
 
 Command used:
 
@@ -89,14 +89,14 @@ Screenshot:
 
 Observation:
 
-The output shows an **ESTABLISHED** connection between:
+The output shows an **ESTABLISHED TCP connection** between:
 
 ```
 192.168.56.101
 192.168.56.105
 ```
 
-This confirms that the remote session is active.
+This confirms the reverse shell connection was successfully created.
 
 ---
 
@@ -112,13 +112,14 @@ netstat
 
 # Findings
 
-A remote connection was successfully established between Kali Linux and the Windows system using Netcat.
+The investigation confirmed that a remote connection could be established from Kali Linux to the Windows workstation using Netcat.
 
-The session was confirmed using netstat, which showed an **ESTABLISHED TCP connection** between the two hosts.
+Key observations:
 
-Port used for the connection:
-
-• TCP 4444
+• Initial connection attempts fail if no listener is present
+• A listener must be configured on the target system
+• Once configured, the attacker system can successfully connect
+• Active sessions can be verified using **netstat**
 
 ---
 
@@ -127,12 +128,13 @@ Port used for the connection:
 • Reverse shell setup
 • Netcat listener configuration
 • Troubleshooting connection errors
-• Verifying active network connections
-• Investigating active sessions using netstat
+• Network session verification
+• Investigating active connections
 
 ---
 
 # Conclusion
 
-The reverse shell connection was successfully established between Kali Linux and the Windows workstation. The investigation demonstrated how attackers can create remote command sessions and how defenders can identify active connections using network monitoring tools.
+A reverse shell connection was successfully established between Kali Linux and the Windows workstation. The session was confirmed using network monitoring tools, demonstrating how remote command sessions can be created and detected within a network environment.
+
 

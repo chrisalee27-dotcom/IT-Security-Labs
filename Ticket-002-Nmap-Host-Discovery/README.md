@@ -20,7 +20,7 @@ Network: **192.168.56.0/24**
 
 # Step 1 — Perform Host Discovery Scan
 
-A ping sweep was performed across the subnet to identify active hosts.
+A host discovery scan was conducted using Nmap to identify active systems on the subnet.
 
 Command used:
 
@@ -29,24 +29,37 @@ nmap -sn 192.168.56.0/24
 ```
 
 Screenshot:
-[View Screenshot](Screenshots/01_Nmap_Host_Discovery.png)
+[View Screenshot](Screenshots/07_Kali_Nmap_Scan.png)
 
 ---
 
-# Step 2 — Identify Live Systems
+# Step 2 — Service Detection
 
-The scan identified multiple active hosts within the network.
+Once hosts were identified, a version detection scan was performed to determine services running on discovered hosts.
 
-Typical output shows:
+Command used:
 
 ```
-Host is up
-MAC Address
-Device type
+nmap -sV 192.168.56.103
 ```
 
 Screenshot:
-[View Screenshot](Screenshots/02_Discovered_Hosts.png)
+[View Screenshot](Screenshots/08_Kali_nmap_sV.png)
+
+---
+
+# Step 3 — Windows Network Verification
+
+Network connections and listening ports were verified on the Windows system to confirm active services.
+
+Command used:
+
+```
+netstat -ano
+```
+
+Screenshot:
+[View Screenshot](Screenshots/09_Windows_Netscan_Ano.png)
 
 ---
 
@@ -54,21 +67,22 @@ Screenshot:
 
 ```
 nmap
+netstat
 ```
 
 ---
 
 # Findings
 
-The Nmap host discovery scan successfully identified active systems within the lab network.
+The Nmap host discovery scan successfully identified active systems within the virtual lab network.
 
-Active hosts discovered included:
+The following hosts were detected as active:
 
-* Kali Linux
-* Windows 10
-* Metasploitable
+* Kali Linux — 192.168.56.101
+* Metasploitable — 192.168.56.103
+* Windows 10 — 192.168.56.105
 
-This confirms that the systems are reachable and ready for further enumeration and security testing.
+Service detection confirmed several network services running on the target systems.
 
 ---
 
@@ -76,12 +90,14 @@ This confirms that the systems are reachable and ready for further enumeration a
 
 • Network host discovery
 • Subnet scanning
-• Nmap reconnaissance techniques
-• Identifying active systems on a network
+• Service enumeration using Nmap
+• Verification of active connections using netstat
+• Basic network reconnaissance techniques
 
 ---
 
 # Conclusion
 
-Nmap successfully identified active hosts within the virtual lab environment. This reconnaissance step is essential before performing service enumeration or vulnerability scanning.
+Nmap successfully identified active hosts within the virtual lab environment. This discovery phase provides the foundation for deeper reconnaissance activities such as port scanning, service enumeration, and vulnerability analysis.
+
 

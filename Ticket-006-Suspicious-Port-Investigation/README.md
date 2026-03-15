@@ -28,7 +28,7 @@ nmap -sT -p 135,139,445 192.168.56.105
 ```
 
 Screenshot:
-[View Screenshot](Screenshots/11_Ports_Filtered.png)
+[View Screenshot](./Screenshots/11_Ports_Filtered.png)
 
 Observation:
 
@@ -47,7 +47,7 @@ netsh advfirewall set allprofiles state off
 ```
 
 Screenshot:
-[View Screenshot](Screenshots/12_Disable_Firewall.png)
+[View Screenshot](./Screenshots/12_Disable_Firewall.png)
 
 Observation:
 
@@ -66,7 +66,7 @@ nmap -sT -p 135,139,445 192.168.56.105
 ```
 
 Screenshot:
-[View Screenshot](Screenshots/13_Ports_Open.png)
+[View Screenshot](./Screenshots/13_Ports_Open.png)
 
 Observation:
 

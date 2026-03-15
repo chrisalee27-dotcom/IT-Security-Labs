@@ -22,7 +22,7 @@ Network: **192.168.56.0/24**
 During the investigation, a persistence mechanism was identified on the Windows system. Persistence techniques allow an attacker to maintain access to a compromised system even after the initial connection is terminated.
 
 Screenshot:
-[View Screenshot](Screenshots/16_Persistence.png)
+[View Screenshot](Screenshots/16_Persistance.png)
 
 Observation:
 
